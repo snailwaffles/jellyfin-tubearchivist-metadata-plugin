@@ -1,0 +1,16 @@
+---
+name: "Template"
+guid: "1fa45044-3529-46d5-a08a-6394c1e8d9c8"
+version: "1.0.0.0"
+targetAbi: "10.8.0.0"
+framework: "net6.0"
+overview: "Short description about your plugin"
+description: >
+  This is a longer description that can span more than one
+  line and include details about your plugin.
+category: "General"
+owner: "jellyfin"
+artifacts:
+- "Jellyfin.Plugin.TubeArchivistMetadata.dll"
+changelog: >
+  changelog
