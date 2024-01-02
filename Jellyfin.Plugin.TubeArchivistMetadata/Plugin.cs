@@ -57,7 +57,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
             new ProductInfoHeaderValue("TAMetadata", Version.ToString()));
 
         PluginConfiguration options = this.Configuration;
-        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", options.Token);
+        httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", options.Token);
         httpClient.BaseAddress = new Uri(options.URL);
 
         return httpClient;
