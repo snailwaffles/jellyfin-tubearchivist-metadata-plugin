@@ -19,4 +19,9 @@ public class VideoData
     /// Gets or sets the date the video was published.
     /// </summary>
     public string Published { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the Video image thumbnail URL.
+    /// </summary>
+    public string VidThumbUrl { get; set; } = string.Empty;
 }
