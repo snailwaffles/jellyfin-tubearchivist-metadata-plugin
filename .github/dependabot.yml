@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # Fetch and update latest `nuget` pkgs
+  - package-ecosystem: nuget
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    labels:
+      - chore
+      - dependency
+      - nuget
+    commit-message:
+      prefix: chore
+      include: scope
+    ignore:
+      - dependency-name: "Jellyfin.Controller"
+        update-types: ["version-update:semver-patch"]
