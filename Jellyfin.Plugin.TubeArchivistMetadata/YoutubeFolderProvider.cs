@@ -46,7 +46,7 @@ public class YoutubeFolderProvider : IRemoteMetadataProvider<Folder, ItemLookupI
     public async Task<HttpResponseMessage> GetImageResponse(string url, CancellationToken cancellationToken)
     {
         Console.WriteLine($"get image for {url}");
-        _logger.LogDebug("GetImages: GetImageResponse ", url);
+        _logger.LogDebug("GetImages: GetImageResponse {0}", url);
         var httpClient = Plugin.Instance!.GetHttpClient();
         return await httpClient.GetAsync(new Uri(url), cancellationToken).ConfigureAwait(false);
     }
