@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
@@ -12,6 +13,7 @@ using MediaBrowser.Controller.Entities.TV;
 using MediaBrowser.Controller.Providers;
 using MediaBrowser.Model.Drawing;
 using MediaBrowser.Model.Entities;
+using MediaBrowser.Model.MediaInfo;
 using MediaBrowser.Model.Providers;
 using Microsoft.Extensions.Logging;
 
@@ -51,12 +53,25 @@ public class YoutubeFolderImageProvider : IDynamicImageProvider
     /// <inheritdoc />
     public async Task<DynamicImageResponse> GetImage(BaseItem item, ImageType type, CancellationToken cancellationToken)
     {
-        Console.WriteLine("replace image1");
+        Console.WriteLine($"replace channel image {item.Path}");
 
         string channelId = Path.GetFileNameWithoutExtension(item.Path);
 
         var httpClient = Plugin.Instance!.GetHttpClient();
         using HttpResponseMessage response = await httpClient.GetAsync($"/api/channel/{channelId}/", cancellationToken).ConfigureAwait(false);
+
+        Console.WriteLine($"response {response.StatusCode}");
+        if (response.StatusCode == HttpStatusCode.NotFound)
+        {
+            Console.WriteLine("return");
+            return new DynamicImageResponse { HasImage = false };
+        }
+        else if (!response.IsSuccessStatusCode)
+        {
+            _logger.LogError("[TubeArchivist] Error getting channel info for {0}: {1}", item.Path, response.StatusCode);
+            return new DynamicImageResponse { HasImage = false };
+        }
+
         using Stream content = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
 
         var jsonOptions = new JsonSerializerOptions
@@ -85,17 +100,15 @@ public class YoutubeFolderImageProvider : IDynamicImageProvider
                 _ => ImageFormat.Jpg
             };
 
-        var imagePath = Path.ChangeExtension(item.Path, extension);
-        using (var outputStream = new FileStream(imagePath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: 8192, useAsync: true))
-        {
-            await contentStream.CopyToAsync(outputStream, cancellationToken).ConfigureAwait(false);
-        }
+        var memoryStream = new MemoryStream();
+        await contentStream.CopyToAsync(memoryStream, cancellationToken).ConfigureAwait(false);
+        memoryStream.Position = 0;
 
         return new DynamicImageResponse
         {
             Format = format,
             HasImage = true,
-            Path = imagePath
+            Stream = memoryStream
         };
     }
 

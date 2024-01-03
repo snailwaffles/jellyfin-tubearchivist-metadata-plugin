@@ -9,7 +9,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using MediaBrowser.Controller.Entities;
-using MediaBrowser.Controller.Entities.TV;
+using MediaBrowser.Controller.Entities.Movies;
 using MediaBrowser.Controller.Providers;
 using MediaBrowser.Model.Drawing;
 using MediaBrowser.Model.Entities;
@@ -22,18 +22,18 @@ namespace Jellyfin.Plugin.TubeArchivistMetadata;
 /// <summary>
 /// The image provider.
 /// </summary>
-public class YoutubeEpisodeImageProvider : IDynamicImageProvider
+public class YoutubeMovieImageProvider : IDynamicImageProvider
 {
     /// <summary>
     /// The _logger.
     /// </summary>
-    private readonly ILogger<YoutubeEpisodeProvider> _logger;
+    private readonly ILogger<YoutubeMovieProvider> _logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="YoutubeEpisodeImageProvider"/> class.
+    /// Initializes a new instance of the <see cref="YoutubeMovieImageProvider"/> class.
     /// </summary>
     /// <param name="logger">The logger.</param>
-    public YoutubeEpisodeImageProvider(ILogger<YoutubeEpisodeProvider> logger)
+    public YoutubeMovieImageProvider(ILogger<YoutubeMovieProvider> logger)
     {
         this._logger = logger;
     }
@@ -53,7 +53,7 @@ public class YoutubeEpisodeImageProvider : IDynamicImageProvider
     /// <inheritdoc />
     public async Task<DynamicImageResponse> GetImage(BaseItem item, ImageType type, CancellationToken cancellationToken)
     {
-        Console.WriteLine($"replace video image {item.Path}");
+        Console.WriteLine($"replace movie image {item.Path}");
         var video = (Video)item;
 
         // No support for these
@@ -122,6 +122,6 @@ public class YoutubeEpisodeImageProvider : IDynamicImageProvider
     /// <inheritdoc />
     public bool Supports(BaseItem item)
     {
-        return item is Episode;
+        return item is Movie;
     }
 }
