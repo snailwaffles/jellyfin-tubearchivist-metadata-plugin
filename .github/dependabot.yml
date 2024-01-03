@@ -13,6 +13,3 @@ updates:
     commit-message:
       prefix: chore
       include: scope
-    ignore:
-      - dependency-name: "Jellyfin.Controller"
-        update-types: ["version-update:semver-patch"]
