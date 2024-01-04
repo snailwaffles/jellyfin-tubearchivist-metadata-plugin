@@ -15,6 +15,10 @@ on:
 
 jobs:
   call:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
     uses: jellyfin/jellyfin-meta-plugins/.github/workflows/scan-codeql.yaml@master
     with:
       repository-name: snailwaffles/jellyfin-tubearchivist-metadata-plugin
