@@ -1,11 +1,16 @@
-# Jellyfin TubeArchivist Metadata Plugin
+<h1 align="center">Jellyfin TubeArchivist Metadata Plugin</h1>
+<h3 align="center">Part of the <a href="https://jellyfin.org">Jellyfin Community</a></h3>
 
-The `jellyfin-tubearchivist-metadata-plugin` is a Jellyfin plugin
-designed to synchronize and manage video metadata from TubeArchivist
-within your Jellyfin media server. This plugin provides Jellyfin with
-the ability to incorporate TubeArchivist's rich metadata, ensuring
-your self-hosted videos are up-to-date and seamlessly integrated with
-your Jellyfin library.
+<p align="center">
+Jellyfin TubeArchivist Metadata Plugin helps you to synchronise metadata from TubeArchivist
+</p>
+
+`jellyfin-tubearchivist-metadata-plugin` is a Jellyfin plugin designed
+to synchronize and manage video metadata from TubeArchivist within
+your Jellyfin media server. This plugin provides Jellyfin with the
+ability to incorporate TubeArchivist's rich metadata, ensuring your
+self-hosted videos are up-to-date and seamlessly integrated with your
+Jellyfin library.
 
 ## Features
 
@@ -20,18 +25,22 @@ your Jellyfin library.
   ecosystem, following the familiar settings and configurations
   paradigm.
 
-## Installation
+## Install Process
 
-To install the `jellyfin-tubearchivist-metadata-plugin`, follow these
-simple steps:
+## From Repository
+1. In Jellyfin, go to dashboard -> plugins -> Repositories -> add and
+   paste this link
+   https://raw.githubusercontent.com/snailwaffles/jellyfin-tubearchivist-metadata-plugin/master/manifest.json
+2. Go to Catalog and search for TubeArchivist
+3. Click on it and install
+4. Restart Jellyfin
 
-1. Go to your Jellyfin server dashboard.
-2. Navigate to the Plugin section.
-3. Find and select `Catalog`.
-4. Search for `TubeArchivist Metadata`, then install the plugin.
-
-After installation, you may need to configure the plugin with settings
-specific to your TubeArchivist setup.
+## From .zip file
+1. Download the .zip file from release page.
+2. Extract it and place the .dll file in a folder called
+   ```plugins/TubeArchivist``` under the program data directory or
+   inside the portable install directory.
+3. Restart Jellyfin.
 
 ## Configuration
 
@@ -51,6 +60,10 @@ during the library scan process. You can manually trigger a library
 scan or wait for the next scheduled scan to see the results of the
 synchronization.
 
+1. Setup a `Mixed Movies and Shows` library
+2. Disable all other metadata plugins other than the TubeArchivist
+   one.
+
 ## License
 
 This `jellyfin-tubearchivist-metadata-plugin` is available under the
@@ -58,10 +71,12 @@ This `jellyfin-tubearchivist-metadata-plugin` is available under the
 
 ## Author
 
-- [snailwaffles](https://github.com/snailwaffles) - Initial work and maintenance
+- [snailwaffles](https://github.com/snailwaffles) - Initial work and
+  maintenance
 
 ## Acknowledgments
 
 - [TubeArchivist](https://github.com/tubearchivist/tubearchivist)
 - [Jellyfin Project](https://jellyfin.org/)
-- And all our contributors and users who test, use, and support the plugin.
+- And all our contributors and users who test, use, and support the
+  plugin.
