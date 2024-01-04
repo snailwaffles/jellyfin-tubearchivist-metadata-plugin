@@ -39,7 +39,7 @@ public class Plugin : BasePlugin<PluginConfiguration>, IHasWebPages
     public override string Name => "TubeArchivist";
 
     /// <inheritdoc />
-    public override Guid Id => Guid.Parse("13ddde71-8746-4f8b-8d4f-961e0a42de33");
+    public override Guid Id => Guid.Parse("1fa45044-3529-46d5-a08a-6394c1e8d9c8");
 
     /// <summary>
     /// Gets the current plugin instance.
