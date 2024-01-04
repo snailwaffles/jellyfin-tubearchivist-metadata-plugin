@@ -60,6 +60,10 @@ during the library scan process. You can manually trigger a library
 scan or wait for the next scheduled scan to see the results of the
 synchronization.
 
+1. Setup a `Mixed Movies and Shows` library
+2. Disable all other metadata plugins other than the TubeArchivist
+   one.
+
 ## License
 
 This `jellyfin-tubearchivist-metadata-plugin` is available under the
