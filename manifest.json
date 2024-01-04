@@ -1,0 +1,20 @@
+[
+    {
+        "guid": "1fa45044-3529-46d5-a08a-6394c1e8d9c8",
+        "name": "TubeArchivist Metadata",
+        "description": "This is a longer description that can span more than one line and include details about your plugin.\n",
+        "overview": "Short description about your plugin",
+        "owner": "jellyfin",
+        "category": "General",
+        "versions": [
+            {
+                "version": "3.0.0.0",
+                "changelog": "- add write permissions (#20) @snailwaffles",
+                "targetAbi": "10.8.13.0",
+                "sourceUrl": "https://github.com/snailwaffles/jellyfin-tubearchivist-metadata-plugin/releases/download/v3/tubearchivist-metadata_3.0.0.0.zip",
+                "checksum": "bf96c664a2b2f80e67bdd79c4252e4b0",
+                "timestamp": "2024-01-04T11:25:38Z"
+            }
+        ]
+    }
+]
