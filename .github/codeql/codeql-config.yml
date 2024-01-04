@@ -1,0 +1,31 @@
+name: "C# CodeQL Configuration"
+
+# Autobuild attempts to automatically build the code
+# Add this if CodeQL can't build the project automatically
+# or needs additional arguments
+# autobuild:
+#   language: csharp
+
+# Paths to include in the analysis
+paths:
+  - "**/*.cs"
+
+# Paths to exclude from the analysis
+paths-ignore:
+  - "**/GeneratedCode/**"
+  - "**/Tests/**"
+
+# Queries included in addition to the default CodeQL queries
+queries:
+  - uses: security-and-quality   # The standard query suite for security and quality issues
+  # Custom queries can be added like this (assuming they are checked in alongside the config)
+  #- uses: ./.github/codeql/custom-queries-csharp
+
+# Override the default queries by providing a list of queries to run
+# overriding-queries:
+#   - uses: ./path/to/your/own/queries@v1
+
+# Excludes specific queries or query directories
+# exclude:
+#   - queries/security-extended
+#   - queries/cpp/memory-management
