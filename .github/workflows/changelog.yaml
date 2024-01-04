@@ -11,14 +11,8 @@ on:
     types:
       - update-prep-command
 
-permissions:
-  contents: read
-
 jobs:
   call:
-    permissions:
-      contents: write
-      pull-requests: write
     uses: jellyfin/jellyfin-meta-plugins/.github/workflows/changelog.yaml@master
     with:
       repository-name: snailwaffles/jellyfin-tubearchivist-metadata-plugin
