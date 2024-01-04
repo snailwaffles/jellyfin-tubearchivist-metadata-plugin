@@ -1,16 +1,26 @@
 ---
 name: "TubeArchivist Metadata"
 guid: "1fa45044-3529-46d5-a08a-6394c1e8d9c8"
-version: "1"
-targetAbi: "10.8.0.0"
+version: "1.0.0"
+targetAbi: "10.8.13.0"
 framework: "net6.0"
 overview: "Short description about your plugin"
 description: >
-  This is a longer description that can span more than one
-  line and include details about your plugin.
+  This is a longer description that can span more than one line and include details about your plugin.
+
 category: "General"
 owner: "jellyfin"
 artifacts:
-- "Jellyfin.Plugin.TubeArchivistMetadata.dll"
-changelog: >
-  changelog
+  - "Jellyfin.Plugin.TubeArchivistMetadata.dll"
+changelog: |-
+  - update release drafter configuration (#13) @snailwaffles
+  - Changelog permissions (#12) @snailwaffles
+  - remove permissions (#11) @snailwaffles
+  - add codeql configuration (#10) @snailwaffles
+  - update version (#9) @snailwaffles
+  - re-enable permissions (#7) @snailwaffles
+  - use a separate account (#6) @snailwaffles
+  - update action permissions (#5) @snailwaffles
+  - add permissions to job (#4) @snailwaffles
+  - chore(deps): bump StyleCop.Analyzers from 1.2.0-beta.507 to 1.2.0-beta.556 (#1) @dependabot
+  - chore(deps): bump Jellyfin.Controller and Jellyfin.Model (#2) @dependabot
