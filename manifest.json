@@ -8,6 +8,14 @@
         "category": "General",
         "versions": [
             {
+                "version": "4.0.0.0",
+                "changelog": "- make the guid match throughout the plugin (#25) @snailwaffles\n- ci(deps): bump actions/upload-artifact from 3.1.3 to 4.0.0 (#17) @dependabot\n- ci(deps): bump actions/setup-dotnet from 3 to 4 (#19) @dependabot\n- ci(deps): bump oddstr13/jellyfin-plugin-repository-manager from 1.0.11 to 1.0.12 (#18) @dependabot\n- update readme (#24) @snailwaffles\n- add manifest.json (#22) @snailwaffles",
+                "targetAbi": "10.8.13.0",
+                "sourceUrl": "https://github.com/snailwaffles/jellyfin-tubearchivist-metadata-plugin/releases/download/v4/tubearchivist-metadata_4.0.0.0.zip",
+                "checksum": "63f73b0c8a9aa8b5d70784c0f87bfbd2",
+                "timestamp": "2024-01-05T18:01:10Z"
+            },
+            {
                 "version": "3.0.0.0",
                 "changelog": "- add write permissions (#20) @snailwaffles",
                 "targetAbi": "10.8.13.0",
