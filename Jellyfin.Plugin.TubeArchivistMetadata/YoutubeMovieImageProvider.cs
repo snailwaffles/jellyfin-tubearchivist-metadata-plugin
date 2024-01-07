@@ -53,7 +53,7 @@ public class YoutubeMovieImageProvider : IDynamicImageProvider
     /// <inheritdoc />
     public async Task<DynamicImageResponse> GetImage(BaseItem item, ImageType type, CancellationToken cancellationToken)
     {
-        Console.WriteLine($"replace movie image {item.Path}");
+        _logger.LogDebug("[TubeArchivist] Fetching image for {0}", item.Path);
         var video = (Video)item;
 
         // No support for these
@@ -61,8 +61,6 @@ public class YoutubeMovieImageProvider : IDynamicImageProvider
         {
             return new DynamicImageResponse { HasImage = false };
         }
-
-        Console.WriteLine("replace image1");
 
         string videoId = Path.GetFileNameWithoutExtension(item.Path);
 

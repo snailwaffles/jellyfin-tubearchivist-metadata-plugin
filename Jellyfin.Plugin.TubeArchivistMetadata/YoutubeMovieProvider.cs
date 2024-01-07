@@ -44,7 +44,7 @@ public class YoutubeMovieProvider : IRemoteMetadataProvider<Movie, MovieInfo>
     /// <inheritdoc />
     public async Task<HttpResponseMessage> GetImageResponse(string url, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("GetImages: GetImageResponse {0}", url);
+        _logger.LogDebug("[TubeArchivist] GetImageResponse {0}", url);
         var httpClient = Plugin.Instance!.GetHttpClient();
         return await httpClient.GetAsync(new Uri(url), cancellationToken).ConfigureAwait(false);
     }
@@ -53,7 +53,7 @@ public class YoutubeMovieProvider : IRemoteMetadataProvider<Movie, MovieInfo>
     public async Task<MetadataResult<Movie>> GetMetadata(MovieInfo info, CancellationToken cancellationToken)
     {
         var metadataResult = new MetadataResult<Movie>();
-        Console.WriteLine($"movie metadata {info.Path}");
+        _logger.LogDebug("[TubeArchivist] Indexing {0}", info.Path);
 
         string videoId = Path.GetFileNameWithoutExtension(info.Path);
 
@@ -102,7 +102,7 @@ public class YoutubeMovieProvider : IRemoteMetadataProvider<Movie, MovieInfo>
         }
 
         metadataResult.Item = item;
-        Console.WriteLine($"sending result {item}");
+        _logger.LogDebug("[TubeArchivist] Updated metadata {0}", item);
 
         return metadataResult;
     }
