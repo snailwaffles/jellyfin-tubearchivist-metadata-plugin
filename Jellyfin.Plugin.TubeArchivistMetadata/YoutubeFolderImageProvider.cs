@@ -53,17 +53,15 @@ public class YoutubeFolderImageProvider : IDynamicImageProvider
     /// <inheritdoc />
     public async Task<DynamicImageResponse> GetImage(BaseItem item, ImageType type, CancellationToken cancellationToken)
     {
-        Console.WriteLine($"replace channel image {item.Path}");
+        _logger.LogDebug("[TubeArchivist] Fetching image for {0}", item.Path);
 
         string channelId = Path.GetFileNameWithoutExtension(item.Path);
 
         var httpClient = Plugin.Instance!.GetHttpClient();
         using HttpResponseMessage response = await httpClient.GetAsync($"/api/channel/{channelId}/", cancellationToken).ConfigureAwait(false);
 
-        Console.WriteLine($"response {response.StatusCode}");
         if (response.StatusCode == HttpStatusCode.NotFound)
         {
-            Console.WriteLine("return");
             return new DynamicImageResponse { HasImage = false };
         }
         else if (!response.IsSuccessStatusCode)

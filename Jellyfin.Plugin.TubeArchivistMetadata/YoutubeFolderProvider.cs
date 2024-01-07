@@ -45,8 +45,7 @@ public class YoutubeFolderProvider : IRemoteMetadataProvider<Folder, ItemLookupI
     /// <inheritdoc />
     public async Task<HttpResponseMessage> GetImageResponse(string url, CancellationToken cancellationToken)
     {
-        Console.WriteLine($"get image for {url}");
-        _logger.LogDebug("GetImages: GetImageResponse {0}", url);
+        _logger.LogDebug("[TubeArchivist] GetImageResponse {0}", url);
         var httpClient = Plugin.Instance!.GetHttpClient();
         return await httpClient.GetAsync(new Uri(url), cancellationToken).ConfigureAwait(false);
     }
@@ -55,8 +54,7 @@ public class YoutubeFolderProvider : IRemoteMetadataProvider<Folder, ItemLookupI
     public async Task<MetadataResult<Folder>> GetMetadata(ItemLookupInfo info, CancellationToken cancellationToken)
     {
         var metadataResult = new MetadataResult<Folder>();
-
-        // var tmdbId = info.GetProviderId(MetadataProvider.Tmdb);
+        _logger.LogDebug("[TubeArchivist] Indexing {0}", info.Path);
 
         string channelId = Path.GetFileNameWithoutExtension(info.Path);
 
@@ -85,15 +83,11 @@ public class YoutubeFolderProvider : IRemoteMetadataProvider<Folder, ItemLookupI
             Name = result.Data.ChannelName,
         };
 
-        // series.SetProviderId(MetadataProvider.Tmdb, tvShow.Id.ToString());
         series.Overview = result.Data.ChannelDescription;
-
-        // series.HomePageUrl = ....;
 
         metadataResult.Item = series;
 
-        Console.WriteLine($"sending channel result {series}");
-        Console.WriteLine($"sending channel result name {series.Name}");
+        _logger.LogDebug("[TubeArchivist] Updated metadata {0}", series);
         return metadataResult;
     }
 
