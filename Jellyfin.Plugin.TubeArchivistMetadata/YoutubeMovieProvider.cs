@@ -88,7 +88,10 @@ public class YoutubeMovieProvider : IRemoteMetadataProvider<Movie, MovieInfo>
 
         if (!string.IsNullOrEmpty(result.Data.Description))
         {
-            item.Overview = result.Data.Description;
+            item.Overview = string.Concat(
+                "<span style=\"white-space: pre-wrap;\">",
+                result.Data.Description,
+                "</span>");
         }
 
         if (!string.IsNullOrEmpty(result.Data.Published))
