@@ -1,17 +1,17 @@
 ---
 name: "TubeArchivist Metadata"
 guid: "1fa45044-3529-46d5-a08a-6394c1e8d9c8"
-version: 5
+version: 6
 targetAbi: "10.8.13.0"
 framework: "net6.0"
 overview: "Sync YouTube metadata from TubeArchivist"
 description: >
-  This plugin syncs metadata from TubeArchivist to Jellyfin, so that
-  it's easy to provide TubeArchivist videos through Jellyfin.
+  This plugin syncs metadata from TubeArchivist to Jellyfin, so that it's easy to provide TubeArchivist videos through Jellyfin.
 
 category: "Metadata"
 owner: "snailwaffles"
 artifacts:
   - "Jellyfin.Plugin.TubeArchivistMetadata.dll"
 changelog: |-
-  - Fix metadata (#26) @snailwaffles
+  - use the logger rather than console write (#29) @snailwaffles
+  - update plugin description (#28) @snailwaffles
