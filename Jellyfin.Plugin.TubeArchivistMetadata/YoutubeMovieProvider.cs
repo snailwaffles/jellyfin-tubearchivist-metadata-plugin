@@ -98,6 +98,7 @@ public class YoutubeMovieProvider : IRemoteMetadataProvider<Movie, MovieInfo>
         {
             string format = "yyyy-MM-dd";
             item.PremiereDate = DateTime.ParseExact(result.Data.Published, format, CultureInfo.InvariantCulture);
+            item.ProductionYear = item.PremiereDate.Value.Year;
         }
 
         metadataResult.Item = item;
